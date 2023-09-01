@@ -20,7 +20,7 @@ app.use('/initializeApplication', initializeApplication);
 app.use('/balanceSheet', accountingSoftware);
 app.use('/decisionEngine', decisionEngine);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
