@@ -1,12 +1,11 @@
-import './App.css';
 import {
   BrowserRouter as Router,
   Route,Routes,Navigate
 } from 'react-router-dom';
-import Home from './components/Home';
-import LoanDetails from './components/LoanDetails';
-import BalanceSheet from './components/BalanceSheet';
-import Outcome from './components/Outcome';
+import Home from './components/Home/Home';
+import LoanDetails from './components/LoanDetails/LoanDetails';
+import BalanceSheet from './components/BalanceSheet/BalanceSheet';
+import Outcome from './components/Outcome/Outcome';
 const App = () => {
   return (
     <>

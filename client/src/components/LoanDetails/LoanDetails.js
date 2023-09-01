@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getAppId } from '../services/serverData';
+import { getAppId } from '../../services/serverData';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-
+import './LoanDetails.css';
 const LoanDetails = () => {
     const navigate = useNavigate();
     const [applicationToken, setApplicationToken] = useState("");
@@ -28,22 +28,23 @@ const LoanDetails = () => {
     };
 
     return applicationToken ? (
-        <div>
-            <h1>On LoanDetails page</h1>
+        <div className='container'>
+            <h1>Loan Details Form</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <label>Name</label>
                 <input type="text" {...register("name", { required: true })} />
-                {errors.name && <p>Name is required</p>}
+                {errors.name && <p className='error-message'>Name is required</p>}
 
-                <label>Year</label>
+                <label>Year Established</label>
                 <input type="number" {...register("year", { required: true, min: 1, max: 2023 })} />
-                {errors.year && <p>Year is required</p>}
+                {errors.year && <p className='error-message'>Year is required</p>}
 
                 <label>Loan Amount</label>
                 <input type="number" {...register("loanAmount", { required: true })} />
-                {errors.loanAmount && <p>Loan Amount is required</p>}
+                {errors.loanAmount && <p className='error-message'>Loan Amount is required</p>}
 
+                <label>Accounting Provider</label>
                 <select {...register("provider")}>
                     <option value="Xero">Xero</option>
                     <option value="MYOB">MYOB</option>

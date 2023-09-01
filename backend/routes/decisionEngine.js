@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
   let preAssessment = 20;  //default
-  let profitIn12Months = req.body.sheet
+  let profitIn12Months = req.body.sheetData
     .slice(0, 12)
     .reduce(function(acc, curr) {
         acc = acc + curr.profitOrLoss;
@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
     }, 0);
 
   let assetsMonthlyAverage =
-    req.body.sheet
+    req.body.sheetData
       .slice(0, 12)
       .reduce(function(acc, curr) {
         acc = acc + curr.assetsValue;
@@ -27,11 +27,10 @@ router.post('/', (req, res) => {
   }
 
   const loanOutcome = {
-    tokenId: req.body.tokenId,
-    outcome: 'approved',
+    tokenId: req.body.token,
+    outcome: 'Approved',
     approvedAmount: (req.body.loanAmount * preAssessment) / 100,
-    approvedTerm: '1 year',
-    approvedInterestRate: '5%',
+    preAssessmentValue: preAssessment
   };
 
   res.setHeader('Content-Type', 'application/json');
